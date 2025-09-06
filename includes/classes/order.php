@@ -968,6 +968,8 @@ class order extends base
 
             $admin_name = (($admin_info->EOF) ? '???' : $admin_info->fields['admin_name']) . ' [' . $_SESSION['emp_admin_id'] . ']';
             $sql_data_array['updated_by'] = $admin_name;
+        } else {
+            $sql_data_array['updated_by'] = 'Customer';
         }
 
         zen_db_perform(TABLE_ORDERS_STATUS_HISTORY, $sql_data_array);

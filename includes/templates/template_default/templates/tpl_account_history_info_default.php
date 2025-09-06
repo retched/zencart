@@ -151,8 +151,8 @@ if (!empty($order->statuses)) {
     // The *first* comment, made by the customer, is 'protected' from using HTML taga; all others are
     // made by the admin or a 'known' entity and HTML is allowed.
     //
-    $protected = true;
     foreach ($order->statuses as $statuses) {
+        $protected = ($statuses['updated_by'] === 'Customer');
 ?>
     <tr>
         <td><?php echo zen_date_short($statuses['date_added']); ?></td>

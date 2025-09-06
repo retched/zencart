@@ -66,7 +66,7 @@ if (!isset($_GET['action']) || $_GET['action'] !== 'confirm') {
 
     $statusArray = [];
     $statuses_query =
-        'SELECT os.orders_status_name, osh.date_added, osh.comments
+        'SELECT os.orders_status_name, osh.date_added, osh.comments, osh.updated_by
            FROM ' . TABLE_ORDERS_STATUS . ' os, ' . TABLE_ORDERS_STATUS_HISTORY . ' osh
           WHERE osh.orders_id = :ordersID
             AND osh.orders_status_id = os.orders_status_id
@@ -81,6 +81,7 @@ if (!isset($_GET['action']) || $_GET['action'] !== 'confirm') {
             'date_added' => $status['date_added'],
             'orders_status_name' => $status['orders_status_name'],
             'comments' => $status['comments'],
+            'updated_by' => $status['updated_by'],
         ];
     }
     // get order details
